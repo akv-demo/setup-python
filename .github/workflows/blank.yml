@@ -11,31 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+
+      - name: Python Cache
+        uses: actions/cache@v3
         with:
-          python-version: '3.9'
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('poetry-demo/poetry.lock') }}
+          key: ${{ env.pythonLocation }}-${{ hashFiles('tests/requirements.txt') }}
 
-      - name: env.pythonLocation
-        env:
-          LOC: ${{ env.pythonLocation }}
-        run: |
-          echo "LOC ${LOC}"
-
-  v3:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-python@v3
+      - name: Python Cache
+        uses: actions/cache@v3
         with:
-          python-version: '3.9'
           path: ${{ env.pythonLocation }}
-          key: ${{ env.pythonLocation }}-${{ hashFiles('poetry-demo/poetry.lock') }}
-
-      - name: env.pythonLocation
-        env:
-          LOC: ${{ env.pythonLocation }}
-        run: |
-          echo "LOC ${LOC}"
+          key: ${{ env.pythonLocation }}-${{ hashFiles('tests/requirements.txt') }}
+ 
