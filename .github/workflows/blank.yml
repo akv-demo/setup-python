@@ -7,7 +7,7 @@ on:
 
 jobs:
   v4:
-    runs-on: latest-ubuntu
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -19,7 +19,7 @@ jobs:
 
 
   v3:
-    runs-on: latest-ubuntu
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
