@@ -17,6 +17,11 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('poetry-demo/poetry.lock') }}
 
+      - name: env.pythonLocation
+        env:
+          LOC: ${{ env.pythonLocation }}
+        run: |
+          echo "LOC ${LOC}"
 
   v3:
     runs-on: ubuntu-latest
@@ -28,3 +33,9 @@ jobs:
           python-version: '3.9'
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('poetry-demo/poetry.lock') }}
+
+      - name: env.pythonLocation
+        env:
+          LOC: ${{ env.pythonLocation }}
+        run: |
+          echo "LOC ${LOC}"
