@@ -20,7 +20,9 @@ jobs:
         
       - run: |
           set -x
-          ls -la `which python3`
+          path=`which python3`
+          echo $path
+          ls -la `dirname $path`
           python3 --version
           python3-config --ldflags --embed
           pkg-config --libs python3-embed
