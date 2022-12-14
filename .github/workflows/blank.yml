@@ -9,12 +9,15 @@ jobs:
   s:
     strategy:
       matrix:
-        version: [3.8, 3.9, 3.10, 3.11]
+        version: [3.8, 3.9, "3.10", 3.11]
     if: ${{ true }}
     runs-on: macos-latest
     steps:
       - name: Setup python ${{ matrix.version }}
         uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.version }}
+        
       - run: |
           set -x
           which python3
