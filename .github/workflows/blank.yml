@@ -19,6 +19,13 @@ jobs:
           python-version: ${{ matrix.version }}
           
       - run: |
+          echo "import sysconfig" > t.py
+          echo "getvar = sysconfig.get_config_var" >> t.py
+          echo "print(getvar('Py_ENABLE_SHARED'))" >> t.py
+          echo "print(getvar('LIBPL'))" >> t.py
+          python3 t.py
+          
+      - run: |
           set -x
           which python3-config
           cat `which python3-config`
