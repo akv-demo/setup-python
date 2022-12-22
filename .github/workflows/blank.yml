@@ -18,5 +18,6 @@ jobs:
     steps:
       - run: |
           set +e
-          brew update
+          set +x
+          #brew update
           brew upgrade
