@@ -17,7 +17,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          set +e
-          set +x
-          #brew update
+          brew update
           brew upgrade
+          true
