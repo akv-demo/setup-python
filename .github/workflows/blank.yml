@@ -17,4 +17,4 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          ls -la /usr/loca/bin
+          ls -la /usr/local/bin
