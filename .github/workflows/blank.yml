@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
         
 env:
-  PIP_DISABLE_PIP_VERSION_CHECK: 1
-  PIP_NO_PYTHON_VERSION_WARNING: 1
+  PIP_DISABLE_PIP_VERSION_CHECK: 0
+  PIP_NO_PYTHON_VERSION_WARNING: 0
   
 jobs:
   version-set:
@@ -16,16 +16,10 @@ jobs:
       matrix:
         python-version: [2.7]
         
-    env:
-      PIP_DISABLE_PIP_VERSION_CHECK: 2
-      PIP_NO_PYTHON_VERSION_WARNING: 2
         
     steps:
     
       - name: Set up Python ${{ matrix.python-version }}
-        env:
-          PIP_DISABLE_PIP_VERSION_CHECK: 3
-          PIP_NO_PYTHON_VERSION_WARNING: 3
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
