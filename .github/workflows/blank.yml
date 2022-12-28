@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [2.7, 3.7]
+        python-version: [2.7]
         
     steps:
     
@@ -24,4 +24,5 @@ jobs:
 
       - run: |
           python --version
+          pip --version
   
