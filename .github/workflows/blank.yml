@@ -12,6 +12,10 @@ jobs:
       matrix:
         python-version: [2.7]
         
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
+      PIP_NO_PYTHON_VERSION_WARNING: 1
+        
     steps:
     
       - name: Set up Python ${{ matrix.python-version }}
