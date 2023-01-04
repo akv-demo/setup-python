@@ -20,7 +20,7 @@ jobs:
     steps:
     
       - name: Set up Python ${{ matrix.python-version }}
-        uses: akv-demo/setup-python@investigate-env
+        uses: akv-platform/setup-python@investigate-env
         with:
           python-version: ${{ matrix.python-version }}
 
