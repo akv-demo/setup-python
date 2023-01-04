@@ -30,6 +30,6 @@ jobs:
           #python --version
           #pip --version
           echo ensure pip
-          ${pythonLocation}/python -m ensurepip
-          #${pythonLocation}/python -m pip install --ignore-installed pip --disable-pip-version-check --no-warn-script-location
+          #${pythonLocation}/python -m ensurepip
+          ${pythonLocation}/python -m pip install --ignore-installed pip --disable-pip-version-check --no-warn-script-location
 
