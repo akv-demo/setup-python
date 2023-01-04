@@ -29,4 +29,6 @@ jobs:
           echo $PIP_NO_PYTHON_VERSION_WARNING
           python --version
           pip --version
-          ${pythonLocation}/python -m pip install --ignore-installed pip
+          ${pythonLocation}/python -m ensurepip
+          ${pythonLocation}/python -m pip install --ignore-installed pip --disable-pip-version-check --no-warn-script-location
+
