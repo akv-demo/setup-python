@@ -25,11 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - run: |
-          #echo $PIP_DISABLE_PIP_VERSION_CHECK
-          #echo $PIP_NO_PYTHON_VERSION_WARNING
-          #python --version
-          #pip --version
-          echo ensure pip
-          #${pythonLocation}/python -m ensurepip
-          ${pythonLocation}/python -m pip install --ignore-installed pip --disable-pip-version-check --no-warn-script-location
-
+          echo $PIP_DISABLE_PIP_VERSION_CHECK
+          echo $PIP_NO_PYTHON_VERSION_WARNING
+          ${pythonLocation}/python -m ensurepip
+          
