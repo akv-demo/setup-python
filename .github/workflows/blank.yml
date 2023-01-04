@@ -25,6 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - run: |
+          set -x
           echo $PIP_DISABLE_PIP_VERSION_CHECK
           echo $PIP_NO_PYTHON_VERSION_WARNING
           ${pythonLocation}/python -m ensurepip
