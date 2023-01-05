@@ -18,5 +18,6 @@ jobs:
     steps:
       - run: |
           ls -la /usr/local/bin
+          ls -la /opt/hostedtoolcache
           #brew update
           #brew upgrade || echo $?;true
