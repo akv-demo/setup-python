@@ -18,6 +18,7 @@ jobs:
     steps:
      
       - run: |
+          brew link --overwrite python@3.10
           brew update
           brew upgrade || brew link --overwrite python@3.10
           
