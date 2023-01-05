@@ -18,6 +18,6 @@ jobs:
     steps:
       - run: |
           ls -la /opt
-          set
+          ls -la $RUNNER_TOOL_CACHE
           #brew update
           #brew upgrade || echo $?;true
