@@ -17,5 +17,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
+          ls -la /usr/local/bin
           brew update
           brew upgrade || echo $?;true
