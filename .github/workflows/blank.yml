@@ -18,6 +18,6 @@ jobs:
     steps:
       - run: |
           ls -la /opt
-          ls -la $RUNNER_TOOL_CACHE/Python
+          ls -la $RUNNER_TOOL_CACHE/Python/3.11.1
           #brew update
           #brew upgrade || echo $?;true
