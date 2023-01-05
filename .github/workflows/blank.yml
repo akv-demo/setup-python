@@ -17,7 +17,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          ls -la /opt
-          ls -la $RUNNER_TOOL_CACHE/Python/3.11.1
-          #brew update
-          #brew upgrade || echo $?;true
+           brew install "python@3.10" || brew link --overwrite python@3.10
+
+      - run: |
+          brew update
+          brew upgrade || echo $?;true
