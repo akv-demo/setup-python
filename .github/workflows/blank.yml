@@ -16,10 +16,8 @@ jobs:
   version:
     runs-on: macos-latest
     steps:
-      - run: |
-           brew install "python@3.11" || brew link --overwrite python@3.11
-
+     
       - run: |
           brew update
-          brew upgrade
+          brew upgrade || brew link --overwrite python@3.10
           
