@@ -22,6 +22,10 @@ jobs:
           python3 --version
           
       - run: |
+          brew remove python
+          ls -la /usr/local/bin
+    
+      - run: |
           brew update
           brew upgrade || true
           which python3
