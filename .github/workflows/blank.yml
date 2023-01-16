@@ -22,8 +22,10 @@ jobs:
           python3 --version
           
       - run: |
-          brew remove python
+          brew uninstall --ignore-dependencies python
           ls -la /usr/local/bin
+          which python
+          az --version
     
       - run: |
           brew update
