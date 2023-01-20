@@ -9,23 +9,13 @@ jobs:
   test-poetry:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Install poetry
-        run: pipx install poetry
-
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          cache: poetry
-
-      - name: run
-        working-directory: poetry-demo
+      - name: create big enough temp file
         run: |
-          ls
-          which python3
-          which poetry
-          poetry install
-          ls -la
-          poetry run python3 main.py
+          dd if=/dev/random of=/tmp/big bs=1048576 count=200
+
+      - name: repro
+        run: |
+          node index.js /tmp/big 
+          
