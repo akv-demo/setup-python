@@ -2,12 +2,14 @@ const fs = require("fs")
 const stream = require('node:stream')
 
 async function uploadChunk(
-  openStream //: () => NodeJS.ReadableStream,
+  openStream, //: () => NodeJS.ReadableStream,
+  start,
+  end,
 ) { //: Promise<void> {
   const data = openStream()
   const ws = new stream.PassThrough()
-  const p = data.pipe(ws)
-  // console.log(p)
+  const p = await data.pipe(ws)
+  console.log(`pipe ${start} - ${end}`)
   return p
 }
 
@@ -48,11 +50,12 @@ const uploadFile = async (archivePath) => {
                 }),
             start,
             end
-          );
+          )
         }
       })
     );
   } finally {
+    console.log('close')
     fs.closeSync(fd);
   }
   done = true;
@@ -68,3 +71,5 @@ const wait = (next) => setTimeout(() => {
 uploadFile(process.argv[1])
 
 wait(wait)
+
+
