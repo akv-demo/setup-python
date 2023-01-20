@@ -1,25 +1,43 @@
-const fs = require("fs")
-const stream = require('node:stream')
+const fs = require("fs");
+const stream = require("node:stream");
 
-async function uploadChunk(
+const uploadWithCallback = (
   openStream, //: () => NodeJS.ReadableStream,
   start,
   end,
-) { //: Promise<void> {
+  cb
+) => {
   const data = openStream()
   const ws = new stream.PassThrough()
-  const p = await data.pipe(ws)
-  console.log(`pipe ${start} - ${end}`)
-  return p
+  data.on('end', function() {
+    console.log(`pipe end ${start}-${end}`)
+    cb(null)
+  })
+ // console.log(`pipe start ${start}-${end}`)
+  data.pipe(ws)
 }
+
+let count = 0
+const uploadChunk = (
+  openStream, //: () => NodeJS.ReadableStream,
+  start,
+  end
+) => new Promise((resolve, reject) =>{
+  if (count++ < 0) {
+    reject(Error("AAA"))
+  } else {
+    uploadWithCallback(openStream, start, end, resolve);
+  }
+})
 
 let done = false
 
-const maxChunkSize = 256
+const maxChunkSize = 128
 
 const uploadFile = async (archivePath) => {
-  const fd = fs.openSync(archivePath, "r");
-  const fileSize = fs.statSync(archivePath).size;
+  const fd = fs.openSync(archivePath, "r")
+  const fileSize = fs.statSync(archivePath).size
+  console.log(archivePath + ' fileSize '+fileSize)
 
   const parallelUploads = [...new Array(4).keys()];
 
@@ -50,26 +68,28 @@ const uploadFile = async (archivePath) => {
                 }),
             start,
             end
-          )
+          );
         }
       })
     );
   } finally {
-    console.log('close')
+    console.log("close");
     fs.closeSync(fd);
   }
   done = true;
 };
 
-const wait = (next) => setTimeout(() => {
+const wait = () => setTimeout(() => {
   if (!done) {
-    console.log("wait...")
-    next()
+    console.log("wait...");
+    wait();
   }
-}, 1000)
+}, 10);
 
-uploadFile(process.argv[1])
+console.log('start upload '+process.argv)
+uploadFile(process.argv[2]);
+console.log('start wait')
 
-wait(wait)
+//wait();
 
 
