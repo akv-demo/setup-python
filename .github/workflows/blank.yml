@@ -6,41 +6,17 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ emtpy-version ]
-  pull_request:
-    branches: [ emtpy-version ]
+
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   version-set:
-    # The type of runner that the job will run on
-    if: ${{ true }}
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
       - name: Show env
-        run: set
-      - name: Setup python 3.7.7
-        uses: actions/setup-python@v2
-      - run: |
-          python --version
-  version-notset:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Show env
-        run: set
-      - name: Setup python no version
-        uses: actions/setup-python@v2
-        with:
-          python-version:
-      - run: |
-          which python
-          python --version  
+        run: |
+          whoami
+          groups
