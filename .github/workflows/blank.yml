@@ -14,13 +14,13 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   version-set:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - name: Show env
         run: |
           set -x
           whoami
           groups
-          which
+          which automationmodetool
           automationmodetool
           automationmodetool enable-automationmode-without-authentication
