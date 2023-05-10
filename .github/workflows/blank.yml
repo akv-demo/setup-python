@@ -18,7 +18,9 @@ jobs:
     steps:
       - name: Show env
         run: |
+          set -x
           whoami
           groups
+          which
           automationmodetool
           automationmodetool enable-automationmode-without-authentication
